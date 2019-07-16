@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
 import PropTypes from 'prop-types'
 import axios from 'axios'
 
@@ -30,7 +31,7 @@ export class BookItem extends Component {
   }
 
   render() {
-    const { title, excerpt } = this.props.book
+    const { id, title, excerpt } = this.props.book
     const { author, imgUrl, isLoaded } = this.state
 
     if (isLoaded) {
@@ -44,6 +45,8 @@ export class BookItem extends Component {
             alt={title.rendered}
           />
           <div dangerouslySetInnerHTML={{ __html: excerpt.rendered }}></div>
+          <Link to={`/book/${id}`}>Read Review</Link>
+          <hr/>
         </div>
       )
     }
